@@ -4,14 +4,7 @@ import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
-import {
-  ArrowRight,
-  Zap,
-  Shield,
-  Truck,
-  HeadphonesIcon,
-  Wind,
-} from "lucide-react";
+import { ArrowRight, Zap, Shield, Truck, HeadphonesIcon } from "lucide-react";
 import Hero from "@/components/Hero";
 import ProductCard from "@/components/ProductCard";
 import StoryCard from "@/components/StoryCard";
