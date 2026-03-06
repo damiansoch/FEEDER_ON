@@ -42,10 +42,26 @@ const faqs = [
 ];
 
 const values = [
-  { icon: <Zap size={24} />, title: "Wydajność Przede Wszystkim", desc: "Sprzedajemy tylko sprzęt, który naprawdę działa w prawdziwych warunkach, nie tylko na testach kontrolnych." },
-  { icon: <Shield size={24} />, title: "Zbudowany na Lata", desc: "Każdy produkt wybieramy za trwałość. Wolimy sprzedać ci jedną świetną wędkę niż pięć przeciętnych." },
-  { icon: <Globe size={24} />, title: "Społeczność Wędkarzy", desc: "Nasz zespół to przede wszystkim wędkarze. Twoje pytania, opinie i recenzje kształtują naszą ofertę." },
-  { icon: <Award size={24} />, title: "Ekspercka Selekcja", desc: "Sami testujemy wszystko. Jeśli nie spełnia naszych standardów – nie trafia do sklepu." },
+  {
+    icon: <Zap size={24} />,
+    title: "Wydajność Przede Wszystkim",
+    desc: "Sprzedajemy tylko sprzęt, który naprawdę działa w prawdziwych warunkach, nie tylko na testach kontrolnych.",
+  },
+  {
+    icon: <Shield size={24} />,
+    title: "Zbudowany na Lata",
+    desc: "Każdy produkt wybieramy za trwałość. Wolimy sprzedać ci jedną świetną wędkę niż pięć przeciętnych.",
+  },
+  {
+    icon: <Globe size={24} />,
+    title: "Społeczność Wędkarzy",
+    desc: "Nasz zespół to przede wszystkim wędkarze. Twoje pytania, opinie i recenzje kształtują naszą ofertę.",
+  },
+  {
+    icon: <Award size={24} />,
+    title: "Ekspercka Selekcja",
+    desc: "Sami testujemy wszystko. Jeśli nie spełnia naszych standardów – nie trafia do sklepu.",
+  },
 ];
 
 function FAQ({ q, a, index }: { q: string; a: string; index: number }) {
@@ -58,7 +74,9 @@ function FAQ({ q, a, index }: { q: string; a: string; index: number }) {
       transition={{ duration: 0.4, delay: index * 0.07 }}
       className={clsx(
         "rounded-2xl border transition-all duration-300 overflow-hidden",
-        open ? "glass-neon border-[#39FF14]/20" : "glass border-black/6 hover:border-black/10"
+        open
+          ? "glass-neon border-[#39FF14]/20"
+          : "glass border-black/6 hover:border-black/10",
       )}
     >
       <button
@@ -69,7 +87,10 @@ function FAQ({ q, a, index }: { q: string; a: string; index: number }) {
         <motion.span
           animate={{ rotate: open ? 180 : 0 }}
           transition={{ duration: 0.25 }}
-          className={clsx("flex-shrink-0 transition-colors", open ? "text-[#39FF14]" : "text-gray-300")}
+          className={clsx(
+            "flex-shrink-0 transition-colors",
+            open ? "text-[#39FF14]" : "text-gray-300",
+          )}
         >
           <ChevronDown size={18} />
         </motion.span>
@@ -92,7 +113,15 @@ function FAQ({ q, a, index }: { q: string; a: string; index: number }) {
   );
 }
 
-function StatCounter({ value, label, index }: { value: string; label: string; index: number }) {
+function StatCounter({
+  value,
+  label,
+  index,
+}: {
+  value: string;
+  label: string;
+  index: number;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true });
   return (
@@ -100,7 +129,11 @@ function StatCounter({ value, label, index }: { value: string; label: string; in
       ref={ref}
       initial={{ opacity: 0, y: 30, scale: 0.9 }}
       animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+      transition={{
+        duration: 0.6,
+        delay: index * 0.1,
+        ease: [0.22, 1, 0.36, 1],
+      }}
       className="text-center p-6 rounded-2xl glass border border-black/6 hover:border-[#39FF14]/20 transition-colors group"
     >
       <div
@@ -109,7 +142,9 @@ function StatCounter({ value, label, index }: { value: string; label: string; in
       >
         {value}
       </div>
-      <div className="text-gray-400 text-xs font-bold tracking-widest uppercase">{label}</div>
+      <div className="text-gray-400 text-xs font-bold tracking-widest uppercase">
+        {label}
+      </div>
     </motion.div>
   );
 }
@@ -151,7 +186,9 @@ export default function InfoPage() {
               O NAS
             </h1>
             <p className="text-gray-400 max-w-lg text-sm leading-relaxed">
-              Jesteśmy wędkarzami, którym znudził się drogi i słaby sprzęt. Dlatego stworzyliśmy sklep, który sprzedaje tylko to, co naprawdę działa.
+              Jesteśmy wędkarzami, którym znudził się drogi i słaby sprzęt.
+              Dlatego stworzyliśmy sklep, który sprzedaje tylko to, co naprawdę
+              działa.
             </p>
           </motion.div>
         </div>
@@ -185,26 +222,33 @@ export default function InfoPage() {
               </h2>
               <div className="space-y-4 text-gray-500 text-sm leading-relaxed">
                 <p>
-                  FeederOn powstał w 2019 roku z inicjatywy grupy zawodowych feederowców z Warszawy,
-                  którzy wciąż napotykali ten sam problem: sprzęt reklamowany jako "profesjonalny"
+                  FeederOn powstał w 2019 roku z inicjatywy grupy zawodowych
+                  feederowców z Warszawy, którzy wciąż napotykali ten sam
+                  problem: sprzęt reklamowany jako &quot;profesjonalny&quot;
                   rzadko spełniał swoje obietnice na wodzie.
                 </p>
                 <p>
-                  Zaczęliśmy sami testować wszystko – na jeziorach, rzekach, kanałach i zawodach
-                  w całej Polsce i Europie Środkowej. Tylko sprzęt, który przeszedł nasze testy
-                  terenowe, trafił do pierwszej oferty.
+                  Zaczęliśmy sami testować wszystko – na jeziorach, rzekach,
+                  kanałach i zawodach w całej Polsce i Europie Środkowej. Tylko
+                  sprzęt, który przeszedł nasze testy terenowe, trafił do
+                  pierwszej oferty.
                 </p>
                 <p>
-                  Dziś FeederOn obsługuje ponad 10 000 wędkarzy w całej Europie, oferując starannie
-                  dobrany asortyment wędek, kołowrotków, przynęt i akcesoriów – sprawdzony przez
-                  ludzi, którzy naprawdę łowią.
+                  Dziś FeederOn obsługuje ponad 10 000 wędkarzy w całej Europie,
+                  oferując starannie dobrany asortyment wędek, kołowrotków,
+                  przynęt i akcesoriów – sprawdzony przez ludzi, którzy naprawdę
+                  łowią.
                 </p>
               </div>
 
               <div className="flex flex-wrap gap-3 mt-8">
-                {["Założony 2019", "Warszawa, Polska", "10K+ Klientów"].map((badge) => (
-                  <span key={badge} className="badge-neon">{badge}</span>
-                ))}
+                {["Założony 2019", "Warszawa, Polska", "10K+ Klientów"].map(
+                  (badge) => (
+                    <span key={badge} className="badge-neon">
+                      {badge}
+                    </span>
+                  ),
+                )}
               </div>
             </motion.div>
 
@@ -261,7 +305,11 @@ export default function InfoPage() {
               {/* Overlay badge */}
               <motion.div
                 animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
                 className="absolute -bottom-4 -left-4 glass-neon rounded-2xl p-4"
               >
                 <p className="text-[#39FF14] font-black text-2xl">10K+</p>
@@ -276,7 +324,12 @@ export default function InfoPage() {
       <section className="py-12 border-y border-black/5">
         <div className="container-custom grid grid-cols-2 md:grid-cols-4 gap-4">
           {stats.map((s, i) => (
-            <StatCounter key={s.label} value={s.value} label={s.label} index={i} />
+            <StatCounter
+              key={s.label}
+              value={s.value}
+              label={s.label}
+              index={i}
+            />
           ))}
         </div>
       </section>
@@ -316,8 +369,12 @@ export default function InfoPage() {
                 <div className="text-[#39FF14]/70 group-hover:text-[#39FF14] transition-colors mb-4">
                   {v.icon}
                 </div>
-                <h3 className="text-gray-900 font-bold text-sm mb-2">{v.title}</h3>
-                <p className="text-gray-400 text-xs leading-relaxed">{v.desc}</p>
+                <h3 className="text-gray-900 font-bold text-sm mb-2">
+                  {v.title}
+                </h3>
+                <p className="text-gray-400 text-xs leading-relaxed">
+                  {v.desc}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -357,13 +414,23 @@ export default function InfoPage() {
                 className="text-center p-6 rounded-2xl glass border border-black/6 hover:border-[#39FF14]/20 transition-all group"
               >
                 <div className="relative w-20 h-20 rounded-full overflow-hidden mx-auto mb-4 border-2 border-[#39FF14]/20 group-hover:border-[#39FF14]/50 transition-colors">
-                  <Image src={member.image} alt={member.name} fill className="object-cover" sizes="80px" />
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover"
+                    sizes="80px"
+                  />
                 </div>
-                <h3 className="text-gray-900 font-bold text-sm">{member.name}</h3>
+                <h3 className="text-gray-900 font-bold text-sm">
+                  {member.name}
+                </h3>
                 <p className="text-[#39FF14]/70 text-[11px] font-bold tracking-wide mb-3 mt-0.5">
                   {member.role}
                 </p>
-                <p className="text-gray-400 text-xs leading-relaxed">{member.bio}</p>
+                <p className="text-gray-400 text-xs leading-relaxed">
+                  {member.bio}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -420,17 +487,37 @@ export default function InfoPage() {
                 KONTAKT
               </h2>
               <p className="text-gray-400 text-sm leading-relaxed mb-8">
-                Odpowiadamy na wszystkie wiadomości w ciągu 24 godzin. Wolisz porozmawiać? Zadzwoń – odbiera prawdziwy wędkarz.
+                Odpowiadamy na wszystkie wiadomości w ciągu 24 godzin. Wolisz
+                porozmawiać? Zadzwoń – odbiera prawdziwy wędkarz.
               </p>
 
               <div className="space-y-4">
                 {[
-                  { icon: <Mail size={18} />, label: "E-mail", value: "kontakt@feederon.com" },
-                  { icon: <Phone size={18} />, label: "Telefon", value: "+48 123 456 789" },
-                  { icon: <MapPin size={18} />, label: "Adres", value: "ul. Wędkarska 12, 00-001 Warszawa" },
-                  { icon: <Clock size={18} />, label: "Godziny", value: "Pon–Pt: 9:00–18:00 | Sob: 10:00–15:00" },
+                  {
+                    icon: <Mail size={18} />,
+                    label: "E-mail",
+                    value: "kontakt@feederon.com",
+                  },
+                  {
+                    icon: <Phone size={18} />,
+                    label: "Telefon",
+                    value: "+48 123 456 789",
+                  },
+                  {
+                    icon: <MapPin size={18} />,
+                    label: "Adres",
+                    value: "ul. Wędkarska 12, 00-001 Warszawa",
+                  },
+                  {
+                    icon: <Clock size={18} />,
+                    label: "Godziny",
+                    value: "Pon–Pt: 9:00–18:00 | Sob: 10:00–15:00",
+                  },
                 ].map((item) => (
-                  <div key={item.label} className="flex items-start gap-4 p-4 rounded-xl glass border border-black/6">
+                  <div
+                    key={item.label}
+                    className="flex items-start gap-4 p-4 rounded-xl glass border border-black/6"
+                  >
                     <div className="text-[#39FF14]/70 mt-0.5">{item.icon}</div>
                     <div>
                       <p className="text-gray-300 text-[10px] font-bold tracking-widest uppercase mb-0.5">
@@ -451,7 +538,9 @@ export default function InfoPage() {
               transition={{ duration: 0.6, delay: 0.15 }}
             >
               <div className="glass border border-black/7 rounded-2xl p-7">
-                <h3 className="text-gray-900 font-bold text-lg mb-6">Wyślij wiadomość</h3>
+                <h3 className="text-gray-900 font-bold text-lg mb-6">
+                  Wyślij wiadomość
+                </h3>
 
                 {formSent ? (
                   <motion.div
@@ -459,9 +548,19 @@ export default function InfoPage() {
                     animate={{ opacity: 1, scale: 1 }}
                     className="flex flex-col items-center justify-center py-12 text-center"
                   >
-                    <CheckCircle2 size={48} className="text-[#39FF14] mb-4" style={{ filter: "drop-shadow(0 0 10px rgba(57,255,20,0.8))" }} />
-                    <p className="text-gray-900 font-bold text-lg">Wiadomość wysłana!</p>
-                    <p className="text-gray-400 text-sm mt-2">Odpiszemy w ciągu 24 godzin.</p>
+                    <CheckCircle2
+                      size={48}
+                      className="text-[#39FF14] mb-4"
+                      style={{
+                        filter: "drop-shadow(0 0 10px rgba(57,255,20,0.8))",
+                      }}
+                    />
+                    <p className="text-gray-900 font-bold text-lg">
+                      Wiadomość wysłana!
+                    </p>
+                    <p className="text-gray-400 text-sm mt-2">
+                      Odpiszemy w ciągu 24 godzin.
+                    </p>
                   </motion.div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4">
@@ -506,8 +605,12 @@ export default function InfoPage() {
                       </label>
                       <select className="w-full px-4 py-3 rounded-xl bg-white border border-black/8 text-gray-600 text-sm focus:outline-none focus:border-[#39FF14]/40 transition-colors appearance-none">
                         <option className="bg-white">Ogólne pytanie</option>
-                        <option className="bg-white">Wsparcie przy zamówieniu</option>
-                        <option className="bg-white">Zapytanie o produkt</option>
+                        <option className="bg-white">
+                          Wsparcie przy zamówieniu
+                        </option>
+                        <option className="bg-white">
+                          Zapytanie o produkt
+                        </option>
                         <option className="bg-white">Zwroty i gwarancja</option>
                         <option className="bg-white">Sprzedaż hurtowa</option>
                       </select>

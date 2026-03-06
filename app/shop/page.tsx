@@ -4,7 +4,6 @@ import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   SlidersHorizontal,
-  X,
   ChevronDown,
   Search,
   Grid3X3,
