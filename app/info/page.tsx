@@ -222,27 +222,31 @@ export default function InfoPage() {
               </h2>
               <div className="space-y-4 text-gray-500 text-sm leading-relaxed">
                 <p>
-                  FeederOn powstał w 2019 roku z inicjatywy grupy zawodowych
-                  feederowców z Warszawy, którzy wciąż napotykali ten sam
-                  problem: sprzęt reklamowany jako &quot;profesjonalny&quot;
-                  rzadko spełniał swoje obietnice na wodzie.
+                  FeederOn powstał w Łańcucie trochę z pasji, trochę z
+                  frustracji. Po kolejnych godzinach spędzonych nad wodą i
+                  jeszcze większej liczbie zerwanych zestawów doszliśmy do
+                  jednego wniosku – dobry sprzęt wędkarski nie powinien być
+                  loterią.
                 </p>
+
                 <p>
-                  Zaczęliśmy sami testować wszystko – na jeziorach, rzekach,
-                  kanałach i zawodach w całej Polsce i Europie Środkowej. Tylko
-                  sprzęt, który przeszedł nasze testy terenowe, trafił do
-                  pierwszej oferty.
+                  Zaczęło się od kilku wędek, skrzynki przynęt i niekończących
+                  się rozmów nad Sanem oraz na lokalnych łowiskach. Testowaliśmy
+                  wszystko sami, często do późnej nocy, aż w końcu znajomi
+                  zaczęli pytać: „Gdzie kupiliście ten sprzęt?”
                 </p>
+
                 <p>
-                  Dziś FeederOn obsługuje ponad 10 000 wędkarzy w całej Europie,
-                  oferując starannie dobrany asortyment wędek, kołowrotków,
-                  przynęt i akcesoriów – sprawdzony przez ludzi, którzy naprawdę
-                  łowią.
+                  Tak powstał FeederOn – mały sklep tworzony przez ludzi, którzy
+                  wolą siedzieć nad wodą niż przy biurku. Nadal jesteśmy
+                  niewielką ekipą z Łańcuta, ale jedno się nie zmieniło: jeśli
+                  coś trafia do naszego sklepu, to dlatego, że naprawdę chcemy
+                  tym łowić.
                 </p>
               </div>
 
               <div className="flex flex-wrap gap-3 mt-8">
-                {["Założony 2019", "Warszawa, Polska", "10K+ Klientów"].map(
+                {["Założony 2019", " Łańcut, Polska", "10K+ Klientów"].map(
                   (badge) => (
                     <span key={badge} className="badge-neon">
                       {badge}
@@ -506,7 +510,7 @@ export default function InfoPage() {
                   {
                     icon: <MapPin size={18} />,
                     label: "Adres",
-                    value: "ul. Wędkarska 12, 00-001 Warszawa",
+                    value: "ul. Wędkarska 12, 00-001 Łańcut",
                   },
                   {
                     icon: <Clock size={18} />,

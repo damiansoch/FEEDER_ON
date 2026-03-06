@@ -4,7 +4,14 @@ import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
-import { ArrowRight, Zap, Shield, Truck, HeadphonesIcon } from "lucide-react";
+import {
+  ArrowRight,
+  Zap,
+  Shield,
+  Truck,
+  HeadphonesIcon,
+  Wind,
+} from "lucide-react";
 import Hero from "@/components/Hero";
 import ProductCard from "@/components/ProductCard";
 import StoryCard from "@/components/StoryCard";
@@ -92,8 +99,12 @@ export default function HomePage() {
                 {f.icon}
               </div>
               <div>
-                <h3 className="text-gray-900 font-bold text-sm mb-1">{f.title}</h3>
-                <p className="text-gray-400 text-xs leading-relaxed">{f.desc}</p>
+                <h3 className="text-gray-900 font-bold text-sm mb-1">
+                  {f.title}
+                </h3>
+                <p className="text-gray-400 text-xs leading-relaxed">
+                  {f.desc}
+                </p>
               </div>
             </motion.div>
           ))}
@@ -120,27 +131,48 @@ export default function HomePage() {
               style={{ maxHeight: "420px" }}
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/25 to-transparent" />
-            <div className="absolute inset-0 flex flex-col justify-center p-8 md:p-14">
+
+            <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-transparent" />
+
+            <div className="absolute inset-0 flex flex-col justify-center p-6 md:p-10 lg:p-14">
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
+                className="max-w-lg backdrop-blur-sm bg-black/30 border border-white/10 rounded-2xl p-6 md:p-8 shadow-[0_10px_40px_rgba(0,0,0,0.35)]"
               >
-                <span className="badge-neon inline-flex mb-4">Nasza Społeczność</span>
+                <span className="badge-neon inline-flex mb-4">
+                  Nasza Społeczność
+                </span>
+
                 <h2
                   className="text-3xl md:text-5xl font-black text-white tracking-tight mb-3"
-                  style={{ fontFamily: "Impact, Arial Black, sans-serif" }}
+                  style={{
+                    fontFamily: "Impact, Arial Black, sans-serif",
+                    textShadow: "0 4px 20px rgba(0,0,0,0.7)",
+                  }}
                 >
                   PASJA, KTÓRĄ{" "}
-                  <span className="text-[#39FF14]" style={{ textShadow: "0 0 20px rgba(57,255,20,0.6)" }}>
-                    CZUĆ
+                  <span
+                    className="text-[#39FF14]"
+                    style={{
+                      textShadow:
+                        "0 0 18px rgba(57,255,20,0.7), 0 4px 20px rgba(0,0,0,0.8)",
+                    }}
+                  >
+                    POCZUJESZ
                   </span>
                 </h2>
-                <p className="text-white/70 text-sm max-w-sm mb-6">
-                  Dołącz do tysięcy wędkarzy, którzy już wybrali FeederOn. Sprzęt testowany na prawdziwej wodzie.
+
+                <p
+                  className="text-white/85 text-sm md:text-base max-w-sm mb-6"
+                  style={{ textShadow: "0 2px 10px rgba(0,0,0,0.65)" }}
+                >
+                  Dołącz do tysięcy wędkarzy, którzy już wybrali FeederOn.
+                  Sprzęt testowany na prawdziwej wodzie.
                 </p>
+
                 <Link href="/shop">
                   <motion.button
                     whileHover={{ scale: 1.04 }}
@@ -170,7 +202,10 @@ export default function HomePage() {
               className="hidden md:flex items-center gap-2 text-gray-400 hover:text-[#39FF14] text-sm font-semibold transition-colors group"
             >
               Wszystkie kategorie
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              <ArrowRight
+                size={16}
+                className="group-hover:translate-x-1 transition-transform"
+              />
             </Link>
           </div>
 
@@ -200,7 +235,9 @@ export default function HomePage() {
                     <div className="absolute bottom-0 left-0 right-0 p-3">
                       <p className="text-xl mb-0.5">{cat.icon}</p>
                       <p className="text-white font-bold text-xs">{cat.name}</p>
-                      <p className="text-gray-400 text-[10px]">{cat.count} szt.</p>
+                      <p className="text-gray-400 text-[10px]">
+                        {cat.count} szt.
+                      </p>
                     </div>
                   </motion.div>
                 </Link>
@@ -220,7 +257,10 @@ export default function HomePage() {
               className="hidden md:flex items-center gap-2 text-gray-400 hover:text-[#39FF14] text-sm font-semibold transition-colors group"
             >
               Zobacz wszystkie produkty
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              <ArrowRight
+                size={16}
+                className="group-hover:translate-x-1 transition-transform"
+              />
             </Link>
           </div>
 
@@ -270,7 +310,7 @@ export default function HomePage() {
                   ✦
                 </span>
               </span>
-            ))
+            )),
           )}
         </motion.div>
       </div>
@@ -289,7 +329,10 @@ export default function HomePage() {
               className="hidden md:flex items-center gap-2 text-gray-400 hover:text-[#39FF14] text-sm font-semibold transition-colors group"
             >
               Wszystkie artykuły
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              <ArrowRight
+                size={16}
+                className="group-hover:translate-x-1 transition-transform"
+              />
             </Link>
           </div>
 
@@ -344,7 +387,9 @@ export default function HomePage() {
             <div className="absolute inset-0 grid-pattern opacity-40" />
 
             <div className="relative z-10">
-              <span className="badge-neon inline-flex mb-5">Ekskluzywna Oferta dla Członków</span>
+              <span className="badge-neon inline-flex mb-5">
+                Ekskluzywna Oferta dla Członków
+              </span>
               <h2
                 className="text-4xl md:text-6xl font-black text-gray-900 mb-4 tracking-tight"
                 style={{ fontFamily: "Impact, Arial Black, sans-serif" }}
@@ -358,8 +403,8 @@ export default function HomePage() {
                 </span>
               </h2>
               <p className="text-gray-500 max-w-md mx-auto mb-8 text-sm">
-                Dołącz do ponad 10 000 wędkarzy i otrzymaj wczesny dostęp do nowości, ekskluzywne oferty
-                i profesjonalne porady wędkarskie.
+                Dołącz do ponad 10 000 wędkarzy i otrzymaj wczesny dostęp do
+                nowości, ekskluzywne oferty i profesjonalne porady wędkarskie.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
                 <input
@@ -375,7 +420,9 @@ export default function HomePage() {
                   Odbierz Zniżkę
                 </motion.button>
               </div>
-              <p className="text-gray-200 text-xs mt-4">Żadnego spamu. Wypisz się w dowolnym momencie.</p>
+              <p className="text-gray-200 text-xs mt-4">
+                Żadnego spamu. Wypisz się w dowolnym momencie.
+              </p>
             </div>
           </motion.div>
         </div>

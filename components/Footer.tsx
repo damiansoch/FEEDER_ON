@@ -2,7 +2,16 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Instagram, Youtube, Facebook, Twitter, Mail, MapPin, Phone, ArrowUpRight } from "lucide-react";
+import {
+  Instagram,
+  Youtube,
+  Facebook,
+  Twitter,
+  Mail,
+  MapPin,
+  Phone,
+  ArrowUpRight,
+} from "lucide-react";
 import Logo from "./Logo";
 
 const footerLinks = {
@@ -47,33 +56,57 @@ export default function Footer() {
           <div className="lg:col-span-2 space-y-6">
             <Logo size="lg" />
             <p className="text-gray-500 text-sm leading-relaxed max-w-xs">
-              Twoje główne miejsce na profesjonalny sprzęt wędkarski. Zaufało nam ponad 10 000 wędkarzy w całej Europie.
+              Twoje główne miejsce na profesjonalny sprzęt wędkarski. Zaufało
+              nam ponad 10 000 wędkarzy w całej Europie.
             </p>
             <div className="flex items-center gap-2">
               {socials.map(({ Icon, href, label }) => (
-                <motion.a key={label} href={href} aria-label={label} whileHover={{ scale: 1.1, y: -2 }} whileTap={{ scale: 0.95 }}
-                  className="flex items-center justify-center w-9 h-9 rounded-lg bg-white border border-black/8 text-gray-400 hover:text-[#1a8c00] hover:border-[#39FF14]/30 transition-colors shadow-sm">
+                <motion.a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="flex items-center justify-center w-9 h-9 rounded-lg bg-white border border-black/8 text-gray-400 hover:text-[#1a8c00] hover:border-[#39FF14]/30 transition-colors shadow-sm"
+                >
                   <Icon size={15} />
                 </motion.a>
               ))}
             </div>
             <div className="space-y-2 text-xs text-gray-400">
-              <div className="flex items-center gap-2"><Mail size={12} className="text-[#39FF14]" /><span>kontakt@feederon.com</span></div>
-              <div className="flex items-center gap-2"><Phone size={12} className="text-[#39FF14]" /><span>+48 123 456 789</span></div>
-              <div className="flex items-center gap-2"><MapPin size={12} className="text-[#39FF14]" /><span>Warszawa, Polska</span></div>
+              <div className="flex items-center gap-2">
+                <Mail size={12} className="text-[#39FF14]" />
+                <span>kontakt@feederon.com</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Phone size={12} className="text-[#39FF14]" />
+                <span>+48 123 456 789</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <MapPin size={12} className="text-[#39FF14]" />
+                <span>Łańcut, Polska</span>
+              </div>
             </div>
           </div>
 
           {/* Links */}
           {Object.entries(footerLinks).map(([section, links]) => (
             <div key={section}>
-              <h4 className="text-gray-900 font-bold text-xs tracking-widest uppercase mb-5">{section}</h4>
+              <h4 className="text-gray-900 font-bold text-xs tracking-widest uppercase mb-5">
+                {section}
+              </h4>
               <ul className="space-y-2.5">
                 {links.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className="text-gray-400 hover:text-[#1a8c00] text-sm transition-colors flex items-center gap-1 group">
+                    <Link
+                      href={link.href}
+                      className="text-gray-400 hover:text-[#1a8c00] text-sm transition-colors flex items-center gap-1 group"
+                    >
                       {link.label}
-                      <ArrowUpRight size={11} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <ArrowUpRight
+                        size={11}
+                        className="opacity-0 group-hover:opacity-100 transition-opacity"
+                      />
                     </Link>
                   </li>
                 ))}
@@ -86,13 +119,24 @@ export default function Footer() {
         <div className="mt-12 pt-8 border-t border-black/5">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
-              <h4 className="text-gray-900 font-bold text-sm tracking-widest uppercase">Bądź na bieżąco</h4>
-              <p className="text-gray-400 text-xs mt-1">Nowości, porady wędkarskie, ekskluzywne okazje.</p>
+              <h4 className="text-gray-900 font-bold text-sm tracking-widest uppercase">
+                Bądź na bieżąco
+              </h4>
+              <p className="text-gray-400 text-xs mt-1">
+                Nowości, porady wędkarskie, ekskluzywne okazje.
+              </p>
             </div>
             <div className="flex items-center gap-2 w-full md:w-auto">
-              <input type="email" placeholder="twoj@email.com"
-                className="flex-1 md:w-64 px-4 py-2.5 rounded-lg bg-white border border-black/8 text-gray-900 text-sm placeholder:text-gray-300 focus:outline-none focus:border-[#39FF14]/50 transition-colors shadow-sm" />
-              <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="btn-neon px-5 py-2.5 rounded-lg text-xs font-black tracking-widest uppercase whitespace-nowrap">
+              <input
+                type="email"
+                placeholder="twoj@email.com"
+                className="flex-1 md:w-64 px-4 py-2.5 rounded-lg bg-white border border-black/8 text-gray-900 text-sm placeholder:text-gray-300 focus:outline-none focus:border-[#39FF14]/50 transition-colors shadow-sm"
+              />
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="btn-neon px-5 py-2.5 rounded-lg text-xs font-black tracking-widest uppercase whitespace-nowrap"
+              >
                 Zapisz się
               </motion.button>
             </div>
@@ -106,7 +150,12 @@ export default function Footer() {
           <span>© 2026 FeederOn. Wszelkie prawa zastrzeżone.</span>
           <div className="flex items-center gap-1">
             <span>Stworzone z</span>
-            <span className="text-[#39FF14]" style={{ filter: "drop-shadow(0 0 4px rgba(57,255,20,0.8))" }}>♥</span>
+            <span
+              className="text-[#39FF14]"
+              style={{ filter: "drop-shadow(0 0 4px rgba(57,255,20,0.8))" }}
+            >
+              ♥
+            </span>
             <span>dla wędkarzy na całym świecie</span>
           </div>
         </div>

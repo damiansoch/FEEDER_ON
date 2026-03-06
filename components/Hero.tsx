@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown, Zap, Star, TrendingUp, ArrowRight } from "lucide-react";
@@ -33,6 +33,8 @@ const floatingCards = [
 
 export default function Hero() {
   const ref = useRef<HTMLDivElement>(null);
+  const [currentWord, setCurrentWord] = useState(0);
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -40,12 +42,19 @@ export default function Hero() {
 
   const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentWord((prev) => (prev + 1) % words.length);
+    }, 2200);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section
       ref={ref}
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
     >
-      {/* Subtle top gradient */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -58,7 +67,6 @@ export default function Hero() {
         style={{ opacity }}
         className="relative z-10 flex flex-col items-center text-center px-6 max-w-5xl mx-auto"
       >
-        {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -72,58 +80,46 @@ export default function Hero() {
           Wiosenny Sezon 2026 — Nowa Kolekcja Już Dostępna
         </motion.div>
 
-        {/* Main heading */}
         <div className="overflow-hidden mb-3">
           <motion.h1
             initial={{ y: 60, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="text-[clamp(3rem,9vw,7.5rem)] font-black leading-none tracking-tighter text-gray-900"
-            style={{ fontFamily: "Impact, Arial Black, sans-serif" }}
+            className="text-[clamp(2.2rem,6vw,4.8rem)] font-semibold leading-none tracking-[0.14em] text-gray-900"
+            style={{
+              fontFamily: '"Oswald", "Anton", "Arial Narrow", sans-serif',
+            }}
           >
             WZMOCNIJ SWOJĄ
           </motion.h1>
         </div>
 
-        {/* Animated cycling word */}
         <div
-          className="mb-8 overflow-hidden"
-          style={{ height: "clamp(3rem,9vw,7.5rem)" }}
+          className="mb-8 overflow-hidden flex items-center justify-center"
+          style={{ height: "clamp(2.4rem,7vw,5.5rem)" }}
         >
           <motion.div
-            animate={{ y: words.map((_, i) => `${-i * 100}%`) }}
-            transition={{
-              duration: words.length * 2.5,
-              repeat: Infinity,
-              repeatType: "loop",
-              ease: "easeInOut",
-              times: words.map((_, i) => i / words.length),
-            }}
-            className="flex flex-col"
+            key={words[currentWord]}
+            initial={{ y: 40, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -40, opacity: 0 }}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            className="flex items-center justify-center"
           >
-            {[...words, words[0]].map((word, i) => (
-              <div
-                key={i}
-                style={{ height: "clamp(3rem,9vw,7.5rem)" }}
-                className="flex items-center justify-center"
-              >
-                <span
-                  className="text-[clamp(3rem,9vw,7.5rem)] font-black leading-none tracking-tighter"
-                  style={{
-                    fontFamily: "Impact, Arial Black, sans-serif",
-                    color: "#39FF14",
-                    textShadow:
-                      "0 0 24px rgba(57,255,20,0.5), 0 0 48px rgba(57,255,20,0.2)",
-                  }}
-                >
-                  {word}
-                </span>
-              </div>
-            ))}
+            <span
+              className="text-[clamp(2.4rem,7vw,5.5rem)] font-semibold leading-none tracking-[0.18em]"
+              style={{
+                fontFamily: '"Oswald", "Anton", "Arial Narrow", sans-serif',
+                color: "#39FF14",
+                textShadow:
+                  "0 0 20px rgba(57,255,20,0.45), 0 0 40px rgba(57,255,20,0.18)",
+              }}
+            >
+              {words[currentWord]}
+            </span>
           </motion.div>
         </div>
 
-        {/* Subtitle */}
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -134,7 +130,6 @@ export default function Hero() {
           kompromis. Każdy rzut. Każde trafienie. Każdy sezon.
         </motion.p>
 
-        {/* CTA Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -161,7 +156,6 @@ export default function Hero() {
           </Link>
         </motion.div>
 
-        {/* Stats */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -191,7 +185,6 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* Floating info cards */}
       {floatingCards.map((card, i) => (
         <motion.div
           key={i}
@@ -223,7 +216,6 @@ export default function Hero() {
         </motion.div>
       ))}
 
-      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
