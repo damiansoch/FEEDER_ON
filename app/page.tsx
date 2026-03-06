@@ -112,70 +112,73 @@ export default function HomePage() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="relative rounded-3xl overflow-hidden"
-            style={{ maxHeight: "420px" }}
+            className="relative overflow-hidden rounded-3xl min-h-[420px] sm:min-h-[460px] lg:min-h-[420px]"
           >
             <Image
               src="/images/banner.jpg"
               alt="FeederOn – Pasja wędkarska"
-              width={1920}
-              height={640}
-              className="w-full object-cover object-center"
-              style={{ maxHeight: "420px" }}
+              fill
               priority
+              className="object-cover object-center sm:object-center"
             />
 
-            <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-transparent" />
+            {/* Stronger overlay for mobile readability */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/45 to-black/70 sm:bg-gradient-to-r sm:from-black/85 sm:via-black/55 sm:to-transparent" />
 
-            <div className="absolute inset-0 flex flex-col justify-center p-6 md:p-10 lg:p-14">
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="max-w-lg backdrop-blur-sm bg-black/30 border border-white/10 rounded-2xl p-6 md:p-8 shadow-[0_10px_40px_rgba(0,0,0,0.35)]"
-              >
-                <span className="badge-neon inline-flex mb-4">
-                  Nasza Społeczność
-                </span>
+            {/* Optional extra darkening behind text area */}
+            <div className="absolute inset-0 sm:hidden bg-black/25" />
 
-                <h2
-                  className="text-3xl md:text-5xl font-black text-white tracking-tight mb-3"
-                  style={{
-                    fontFamily: "Impact, Arial Black, sans-serif",
-                    textShadow: "0 4px 20px rgba(0,0,0,0.7)",
-                  }}
+            <div className="absolute inset-0 flex items-end sm:items-center">
+              <div className="w-full p-4 sm:p-8 md:p-10 lg:p-14">
+                <motion.div
+                  initial={{ opacity: 0, y: 24, x: 0 }}
+                  whileInView={{ opacity: 1, y: 0, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="w-full max-w-full sm:max-w-lg rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md p-5 sm:p-6 md:p-8 shadow-[0_10px_40px_rgba(0,0,0,0.35)]"
                 >
-                  PASJA, KTÓRĄ{" "}
-                  <span
-                    className="text-[#39FF14]"
+                  <span className="badge-neon inline-flex mb-4">
+                    Nasza Społeczność
+                  </span>
+
+                  <h2
+                    className="mb-3 text-2xl leading-tight sm:text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight"
                     style={{
-                      textShadow:
-                        "0 0 18px rgba(57,255,20,0.7), 0 4px 20px rgba(0,0,0,0.8)",
+                      fontFamily: "Impact, Arial Black, sans-serif",
+                      textShadow: "0 4px 20px rgba(0,0,0,0.7)",
                     }}
                   >
-                    POCZUJESZ
-                  </span>
-                </h2>
+                    PASJA, KTÓRĄ{" "}
+                    <span
+                      className="text-[#39FF14] block sm:inline"
+                      style={{
+                        textShadow:
+                          "0 0 18px rgba(57,255,20,0.7), 0 4px 20px rgba(0,0,0,0.8)",
+                      }}
+                    >
+                      POCZUJESZ
+                    </span>
+                  </h2>
 
-                <p
-                  className="text-white/85 text-sm md:text-base max-w-sm mb-6"
-                  style={{ textShadow: "0 2px 10px rgba(0,0,0,0.65)" }}
-                >
-                  Dołącz do tysięcy wędkarzy, którzy już wybrali FeederOn.
-                  Sprzęt testowany na prawdziwej wodzie.
-                </p>
-
-                <Link href="/shop">
-                  <motion.button
-                    whileHover={{ scale: 1.04 }}
-                    whileTap={{ scale: 0.97 }}
-                    className="btn-neon px-7 py-3 rounded-xl text-sm font-black tracking-widest uppercase flex items-center gap-2"
+                  <p
+                    className="mb-6 max-w-md text-sm leading-relaxed text-white/85 sm:text-base"
+                    style={{ textShadow: "0 2px 10px rgba(0,0,0,0.65)" }}
                   >
-                    Przejdź do Sklepu <ArrowRight size={15} />
-                  </motion.button>
-                </Link>
-              </motion.div>
+                    Dołącz do tysięcy wędkarzy, którzy już wybrali FeederOn.
+                    Sprzęt testowany na prawdziwej wodzie.
+                  </p>
+
+                  <Link href="/shop">
+                    <motion.button
+                      whileHover={{ scale: 1.04 }}
+                      whileTap={{ scale: 0.97 }}
+                      className="btn-neon inline-flex w-full sm:w-auto items-center justify-center gap-2 px-6 py-3 rounded-xl text-xs sm:text-sm font-black tracking-[0.18em] uppercase"
+                    >
+                      Przejdź do Sklepu <ArrowRight size={15} />
+                    </motion.button>
+                  </Link>
+                </motion.div>
+              </div>
             </div>
           </motion.div>
         </div>
